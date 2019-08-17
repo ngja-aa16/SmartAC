@@ -1,0 +1,114 @@
+{
+  "project_info": {
+    "project_number": "1047468092436",
+    "firebase_url": "https://iot-assignment-2a659.firebaseio.com",
+    "project_id": "iot-assignment-2a659",
+    "storage_bucket": "iot-assignment-2a659.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047468092436:android:fd66a2707dd847a9",
+        "android_client_info": {
+          "package_name": "com.example.iotaircondcontroller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047468092436-8pude2u7dkg33vc9i5o5i1asijmbl1ql.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.iotaircondcontroller",
+            "certificate_hash": "27f72f5d7008cc7fc7cea0342676664bbff6e895"
+          }
+        },
+        {
+          "client_id": "1047468092436-5qjfdjjo9tc4v8vjmos3us9924afqimo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjFVA-lhc9Xi1kfO1YWODzJcRQz4p4nmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047468092436-5qjfdjjo9tc4v8vjmos3us9924afqimo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047468092436:android:c40c8c905c682a87",
+        "android_client_info": {
+          "package_name": "com.example.smartac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047468092436-orjsiq8kr4qq76qeqrhg57jlpp9e475i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smartac",
+            "certificate_hash": "ad380fb6b6503a8f1c003dfd24bb5cba4a0f443d"
+          }
+        },
+        {
+          "client_id": "1047468092436-5qjfdjjo9tc4v8vjmos3us9924afqimo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjFVA-lhc9Xi1kfO1YWODzJcRQz4p4nmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047468092436-5qjfdjjo9tc4v8vjmos3us9924afqimo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047468092436:android:62c2b733235b7d82",
+        "android_client_info": {
+          "package_name": "com.taruc.aircond.controller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047468092436-5qjfdjjo9tc4v8vjmos3us9924afqimo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjFVA-lhc9Xi1kfO1YWODzJcRQz4p4nmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047468092436-5qjfdjjo9tc4v8vjmos3us9924afqimo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
