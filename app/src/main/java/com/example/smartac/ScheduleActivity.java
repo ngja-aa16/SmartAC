@@ -1,5 +1,6 @@
 package com.example.smartac;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -130,25 +131,45 @@ public class ScheduleActivity extends AppCompatActivity {
 
     }
     public void editMon_OnClick(View view) {
-
+        Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
+        intent.putExtra("Target", "Monday");
+        startActivity(intent);
     }
 
     public void editTues_OnClick(View view) {
+        Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
+        intent.putExtra("Target", "Tuesday");
+        startActivity(intent);
     }
 
     public void editWed_OnClick(View view) {
+        Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
+        intent.putExtra("Target", "Wednesday");
+        startActivity(intent);
     }
 
     public void editThurs_OnClick(View view) {
+        Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
+        intent.putExtra("Target", "Thursday");
+        startActivity(intent);
     }
 
     public void editFri_OnClick(View view) {
+        Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
+        intent.putExtra("Target", "Friday");
+        startActivity(intent);
     }
 
     public void editSat_OnClick(View view) {
+        Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
+        intent.putExtra("Target", "Saturday");
+        startActivity(intent);
     }
 
     public void editSun_OnClick(View view) {
+        Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
+        intent.putExtra("Target", "Sunday");
+        startActivity(intent);
     }
 
 }

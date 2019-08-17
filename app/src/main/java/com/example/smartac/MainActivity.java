@@ -43,4 +43,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, ControllerActivity.class);
         startActivity(intent);
     }
+
+    public void schedule(View view) {
+        Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
+        startActivity(intent);
+    }
+
+    public void view(View view) {
+        Intent intent = new Intent(MainActivity.this, ViewActivity.class);
+        startActivity(intent);
+    }
 }

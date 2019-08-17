@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -24,8 +25,6 @@ public class ControllerActivity extends AppCompatActivity {
     DatabaseReference myRef = database.getReference();
     Integer temp1 = 0;
     Integer temp2 = 0;
-    Boolean status1 = false;
-    Boolean status2 = false;
     private TextView txtTemp1;
     private TextView txtTemp2;
     private Switch switch1;
@@ -35,6 +34,10 @@ public class ControllerActivity extends AppCompatActivity {
     private Switch followTimetable2;
     private Switch autoTemp1;
     private Switch autoTemp2;
+    private ImageView increase1;
+    private ImageView increase2;
+    private ImageView decrease1;
+    private ImageView decrease2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +55,14 @@ public class ControllerActivity extends AppCompatActivity {
         switch1 = findViewById(R.id.switch1);
         switch2 = findViewById(R.id.switch2);
         progressBar = findViewById(R.id.progressBar);
-        followTimetable1 = findViewById(R.id.switch3);
-        autoTemp1 = findViewById(R.id.switch4);
-        followTimetable2 = findViewById(R.id.switch5);
-        autoTemp2 = findViewById(R.id.switch6);
-
+        autoTemp1 = findViewById(R.id.switch3);
+        followTimetable1 = findViewById(R.id.switch4);
+        autoTemp2 = findViewById(R.id.switch5);
+        followTimetable2 = findViewById(R.id.switch6);
+        increase1 = findViewById(R.id.increase1);
+        increase2 = findViewById(R.id.increase2);
+        decrease1 = findViewById(R.id.decrease1);
+        decrease2 = findViewById(R.id.decrease2);
         progressBar.setVisibility(View.VISIBLE);
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -136,20 +142,32 @@ public class ControllerActivity extends AppCompatActivity {
         autoTemp1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 autoTemp1.setChecked(isChecked);
-                if (isChecked)
+                if (isChecked) {
                     myRef.child("Aircond").child("Airc001").child("AutoTemp").setValue("True");
-                else
+                    increase1.setVisibility(View.INVISIBLE);
+                    decrease1.setVisibility(View.INVISIBLE);
+                }
+                else {
                     myRef.child("Aircond").child("Airc001").child("AutoTemp").setValue("False");
+                    increase1.setVisibility(View.VISIBLE);
+                    decrease1.setVisibility(View.VISIBLE);
+                }
             }
         });
 
         autoTemp2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 autoTemp2.setChecked(isChecked);
-                if (isChecked)
+                if (isChecked) {
                     myRef.child("Aircond").child("Airc002").child("AutoTemp").setValue("True");
-                else
+                    increase2.setVisibility(View.INVISIBLE);
+                    decrease2.setVisibility(View.INVISIBLE);
+                }
+                else {
                     myRef.child("Aircond").child("Airc002").child("AutoTemp").setValue("False");
+                    increase2.setVisibility(View.VISIBLE);
+                    decrease2.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -176,7 +194,7 @@ public class ControllerActivity extends AppCompatActivity {
 
     public void increase1(View view) {
         txtTemp1 = findViewById(R.id.temp1);
-        if (temp1 < 32 && status1 == true) {
+        if (temp1 < 32 && switch1.isChecked() && !autoTemp1.isChecked()) {
             temp1 = temp1 + 1;
             myRef.child("Aircond").child("Airc001").child("Temp").setValue(temp1.toString());
         }
@@ -184,7 +202,7 @@ public class ControllerActivity extends AppCompatActivity {
 
     public void decrease1(View view) {
         txtTemp1 = findViewById(R.id.temp1);
-        if (temp1 > 16 && status1 == true) {
+        if (temp1 > 16 && switch1.isChecked() && !autoTemp1.isChecked()) {
             temp1 = temp1 - 1;
             myRef.child("Aircond").child("Airc001").child("Temp").setValue(temp1.toString());
         }
@@ -192,7 +210,7 @@ public class ControllerActivity extends AppCompatActivity {
 
     public void increase2(View view) {
         txtTemp2 = findViewById(R.id.temp2);
-        if (temp2 < 32 && status2 == true) {
+        if (temp2 < 32 && switch2.isChecked() && !autoTemp2.isChecked()) {
             temp2 = temp2 + 1;
             myRef.child("Aircond").child("Airc002").child("Temp").setValue(temp2.toString());
         }
@@ -200,7 +218,7 @@ public class ControllerActivity extends AppCompatActivity {
 
     public void decrease2(View view) {
         txtTemp2 = findViewById(R.id.temp2);
-        if (temp2 > 16 && status2 == true) {
+        if (temp2 > 16 && switch1.isChecked() && !autoTemp2.isChecked()) {
             temp2 = temp2 - 1;
             myRef.child("Aircond").child("Airc002").child("Temp").setValue(temp2.toString());
         }
