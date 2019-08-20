@@ -8,25 +8,32 @@
     tools:context=".ScheduleActivity"
     tools:showIn="@layout/activity_schedule">
 
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <Spinner
+        android:id="@+id/spr_day"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/spr_day"
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -46,19 +53,6 @@
                 app:layout_constraintTop_toBottomOf="@id/satEnd" />
 
             <TextView
-                android:id="@+id/sunAC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginRight="36dp"
-                android:text="Airc000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editSun" />
-
-            <TextView
                 android:id="@+id/sunStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +63,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/sunAC" />
+                app:layout_constraintTop_toBottomOf="@+id/editSun" />
 
             <TextView
                 android:id="@+id/sunEnd"
@@ -98,19 +92,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/friEnd" />
 
             <TextView
-                android:id="@+id/satAC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginRight="36dp"
-                android:text="Airc000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editSat" />
-
-            <TextView
                 android:id="@+id/satStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,7 +102,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/satAC" />
+                app:layout_constraintTop_toBottomOf="@+id/editSat" />
 
             <TextView
                 android:id="@+id/satEnd"
@@ -148,20 +129,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView151" />
-
-            <TextView
-                android:id="@+id/textView153"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="8dp"
-                android:text="A/C"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView152" />
+                app:layout_constraintTop_toBottomOf="@+id/satEnd" />
 
             <TextView
                 android:id="@+id/textView154"
@@ -174,7 +142,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView153" />
+                app:layout_constraintTop_toBottomOf="@+id/editSun" />
 
             <TextView
                 android:id="@+id/textView155"
@@ -203,20 +171,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView132" />
-
-            <TextView
-                android:id="@+id/textView149"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="8dp"
-                android:text="A/C"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView148" />
+                app:layout_constraintTop_toBottomOf="@+id/friEnd" />
 
             <TextView
                 android:id="@+id/textView150"
@@ -229,7 +184,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView149" />
+                app:layout_constraintTop_toBottomOf="@+id/editSat" />
 
             <TextView
                 android:id="@+id/textView151"
@@ -258,19 +213,6 @@
                 app:layout_constraintTop_toBottomOf="@id/thursEnd" />
 
             <TextView
-                android:id="@+id/friAC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginRight="36dp"
-                android:text="Airc000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editFri" />
-
-            <TextView
                 android:id="@+id/friStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -281,7 +223,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/friAC" />
+                app:layout_constraintTop_toBottomOf="@+id/editFri" />
 
             <TextView
                 android:id="@+id/friEnd"
@@ -311,19 +253,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView106"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="8dp"
-                android:text="A/C"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView105" />
-
-            <TextView
                 android:id="@+id/textView107"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -334,7 +263,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView106" />
+                app:layout_constraintTop_toBottomOf="@+id/editMon" />
 
             <TextView
                 android:id="@+id/textView108"
@@ -361,20 +290,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView108" />
-
-            <TextView
-                android:id="@+id/textView110"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="8dp"
-                android:text="A/C"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView109" />
+                app:layout_constraintTop_toBottomOf="@+id/monEnd" />
 
             <TextView
                 android:id="@+id/textView111"
@@ -387,7 +303,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView110" />
+                app:layout_constraintTop_toBottomOf="@+id/editTues" />
 
             <TextView
                 android:id="@+id/textView112"
@@ -414,20 +330,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView112" />
-
-            <TextView
-                android:id="@+id/textView114"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="8dp"
-                android:text="A/C"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView113" />
+                app:layout_constraintTop_toBottomOf="@+id/tuesEnd" />
 
             <TextView
                 android:id="@+id/textView115"
@@ -440,7 +343,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView114" />
+                app:layout_constraintTop_toBottomOf="@+id/editWed" />
 
             <TextView
                 android:id="@+id/textView116"
@@ -467,20 +370,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView116" />
-
-            <TextView
-                android:id="@+id/textView122"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="8dp"
-                android:text="A/C"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView121" />
+                app:layout_constraintTop_toBottomOf="@+id/wedEnd" />
 
             <TextView
                 android:id="@+id/textView123"
@@ -493,7 +383,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView122" />
+                app:layout_constraintTop_toBottomOf="@+id/editThurs" />
 
             <TextView
                 android:id="@+id/textView124"
@@ -520,20 +410,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView124" />
-
-            <TextView
-                android:id="@+id/textView130"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="8dp"
-                android:text="A/C"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView129" />
+                app:layout_constraintTop_toBottomOf="@+id/thursEnd" />
 
             <TextView
                 android:id="@+id/textView131"
@@ -546,7 +423,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView130" />
+                app:layout_constraintTop_toBottomOf="@+id/editFri" />
 
             <TextView
                 android:id="@+id/textView132"
@@ -562,19 +439,6 @@
                 app:layout_constraintTop_toBottomOf="@id/textView131" />
 
             <TextView
-                android:id="@+id/monAC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginRight="36dp"
-                android:text="Airc000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editMon" />
-
-            <TextView
                 android:id="@+id/monStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -585,7 +449,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/monAC" />
+                app:layout_constraintTop_toBottomOf="@+id/editMon" />
 
             <TextView
                 android:id="@+id/monEnd"
@@ -601,19 +465,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/monStart" />
 
             <TextView
-                android:id="@+id/tuesAC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginRight="36dp"
-                android:text="Airc000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTues" />
-
-            <TextView
                 android:id="@+id/tuesStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -624,7 +475,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tuesAC" />
+                app:layout_constraintTop_toBottomOf="@+id/editTues" />
 
             <TextView
                 android:id="@+id/tuesEnd"
@@ -665,19 +516,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/monEnd" />
 
-            <TextView
-                android:id="@+id/wedAC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginRight="36dp"
-                android:text="Airc000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editWed" />
-
             <Button
                 android:id="@+id/editWed"
                 android:layout_width="250px"
@@ -715,7 +553,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/wedAC" />
+                app:layout_constraintTop_toBottomOf="@+id/editWed" />
 
             <TextView
                 android:id="@+id/thursEnd"
@@ -754,23 +592,22 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/thursAC" />
-
-            <TextView
-                android:id="@+id/thursAC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="36dp"
-                android:layout_marginRight="36dp"
-                android:text="Airc000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editThurs" />
+                app:layout_constraintTop_toBottomOf="@+id/editThurs" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:padding="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

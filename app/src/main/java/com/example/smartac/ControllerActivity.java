@@ -93,8 +93,12 @@ public class ControllerActivity extends AppCompatActivity {
 
                 if (dataSnapshot.child("Aircond").child("Airc001").child("AutoTemp").getValue(String.class).equals("True")) {
                     autoTemp1.setChecked(true);
+                    increase1.setVisibility(View.INVISIBLE);
+                    decrease1.setVisibility(View.INVISIBLE);
                 } else {
                     autoTemp1.setChecked(false);
+                    increase1.setVisibility(View.VISIBLE);
+                    decrease1.setVisibility(View.VISIBLE);
                 }
 
                 if (dataSnapshot.child("Aircond").child("Airc002").child("FollowTimetable").getValue(String.class).equals("True")) {
@@ -105,8 +109,12 @@ public class ControllerActivity extends AppCompatActivity {
 
                 if (dataSnapshot.child("Aircond").child("Airc002").child("AutoTemp").getValue(String.class).equals("True")) {
                     autoTemp2.setChecked(true);
+                    increase2.setVisibility(View.INVISIBLE);
+                    decrease2.setVisibility(View.INVISIBLE);
                 } else {
                     autoTemp2.setChecked(false);
+                    increase2.setVisibility(View.VISIBLE);
+                    decrease2.setVisibility(View.VISIBLE);
                 }
 
                 progressBar.setVisibility(View.INVISIBLE);

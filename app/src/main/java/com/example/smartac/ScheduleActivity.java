@@ -2,10 +2,15 @@ package com.example.smartac;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,30 +22,30 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
+
 public class ScheduleActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    DatabaseReference aircondRef = myRef.child("Aircond").getRef();
+
+    private Spinner sprDay;
+    private String selectedAircond;
+    private String[] airconds;
 
     private ProgressBar progressBar;
-    private TextView monAC;
     private TextView monSt;
     private TextView monEd;
-    private TextView tuesAC;
     private TextView tuesSt;
     private TextView tuesEd;
-    private TextView wedAC;
     private TextView wedSt;
     private TextView wedEd;
-    private TextView thursAC;
     private TextView thursSt;
     private TextView thursEd;
-    private TextView friAC;
     private TextView friSt;
     private TextView friEd;
-    private TextView satAC;
     private TextView satSt;
     private TextView satEd;
-    private TextView sunAC;
     private TextView sunSt;
     private TextView sunEd;
     private Button editMon;
@@ -64,25 +69,18 @@ public class ScheduleActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar2);
         progressBar.setVisibility(View.VISIBLE);
 
-        monAC = findViewById(R.id.monAC);
         monSt = findViewById(R.id.monStart);
         monEd = findViewById(R.id.monEnd);
-        tuesAC = findViewById(R.id.tuesAC);
         tuesSt = findViewById(R.id.tuesStart);
         tuesEd = findViewById(R.id.tuesEnd);
-        wedAC = findViewById(R.id.wedAC);
         wedSt = findViewById(R.id.wedStart);
         wedEd = findViewById(R.id.wedEnd);
-        thursAC = findViewById(R.id.thursAC);
         thursSt = findViewById(R.id.thursStart);
         thursEd = findViewById(R.id.thursEnd);
-        friAC = findViewById(R.id.friAC);
         friSt = findViewById(R.id.friStart);
         friEd = findViewById(R.id.friEnd);
-        satAC = findViewById(R.id.satAC);
         satSt = findViewById(R.id.satStart);
         satEd = findViewById(R.id.satEnd);
-        sunAC = findViewById(R.id.sunAC);
         sunSt = findViewById(R.id.sunStart);
         sunEd = findViewById(R.id.sunEnd);
         editMon = findViewById(R.id.editMon);
@@ -92,35 +90,22 @@ public class ScheduleActivity extends AppCompatActivity {
         editFri = findViewById(R.id.editFri);
         editSat = findViewById(R.id.editSat);
         editSun = findViewById(R.id.editSun);
+        sprDay = findViewById(R.id.spr_day);
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        aircondRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                monAC.setText(dataSnapshot.child("Timetable").child("Monday").child("Mon001").child("Aircond").getValue(String.class));
-                tuesAC.setText(dataSnapshot.child("Timetable").child("Tuesday").child("Tue001").child("Aircond").getValue(String.class));
-                wedAC.setText(dataSnapshot.child("Timetable").child("Wednesday").child("Wed001").child("Aircond").getValue(String.class));
-                thursAC.setText(dataSnapshot.child("Timetable").child("Thursday").child("Thu001").child("Aircond").getValue(String.class));
-                friAC.setText(dataSnapshot.child("Timetable").child("Friday").child("Fri001").child("Aircond").getValue(String.class));
-                satAC.setText(dataSnapshot.child("Timetable").child("Saturday").child("Sat001").child("Aircond").getValue(String.class));
-                sunAC.setText(dataSnapshot.child("Timetable").child("Sunday").child("Sun001").child("Aircond").getValue(String.class));
+                airconds = new String[(int) dataSnapshot.getChildrenCount()];
+                int pointer = 0;
 
-                monSt.setText(dataSnapshot.child("Timetable").child("Monday").child("Mon001").child("StartTime").getValue(String.class));
-                tuesSt.setText(dataSnapshot.child("Timetable").child("Tuesday").child("Tue001").child("StartTime").getValue(String.class));
-                wedSt.setText(dataSnapshot.child("Timetable").child("Wednesday").child("Wed001").child("StartTime").getValue(String.class));
-                thursSt.setText(dataSnapshot.child("Timetable").child("Thursday").child("Thu001").child("StartTime").getValue(String.class));
-                friSt.setText(dataSnapshot.child("Timetable").child("Friday").child("Fri001").child("StartTime").getValue(String.class));
-                satSt.setText(dataSnapshot.child("Timetable").child("Saturday").child("Sat001").child("StartTime").getValue(String.class));
-                sunSt.setText(dataSnapshot.child("Timetable").child("Sunday").child("Sun001").child("StartTime").getValue(String.class));
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    airconds[pointer] = ds.getKey();
+                    pointer++;
+                }
 
-                monSt.setText(dataSnapshot.child("Timetable").child("Monday").child("Mon001").child("EndTime").getValue(String.class));
-                tuesSt.setText(dataSnapshot.child("Timetable").child("Tuesday").child("Tue001").child("EndTime").getValue(String.class));
-                wedSt.setText(dataSnapshot.child("Timetable").child("Wednesday").child("Wed001").child("EndTime").getValue(String.class));
-                thursSt.setText(dataSnapshot.child("Timetable").child("Thursday").child("Thu001").child("EndTime").getValue(String.class));
-                friSt.setText(dataSnapshot.child("Timetable").child("Friday").child("Fri001").child("EndTime").getValue(String.class));
-                satSt.setText(dataSnapshot.child("Timetable").child("Saturday").child("Sat001").child("EndTime").getValue(String.class));
-                sunSt.setText(dataSnapshot.child("Timetable").child("Sunday").child("Sun001").child("EndTime").getValue(String.class));
-
-                progressBar.setVisibility(View.INVISIBLE);
+                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(ScheduleActivity.this, android.R.layout.simple_spinner_item, airconds);
+                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                sprDay.setAdapter(spinnerAdapter);
             }
 
             @Override
@@ -129,46 +114,96 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         });
 
+        sprDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedAircond = adapterView.getItemAtPosition(i).toString();
+
+                Toast.makeText(getApplicationContext(), "Showing " + selectedAircond + " timetable...",Toast.LENGTH_SHORT).show();
+
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        monSt.setText(dataSnapshot.child("Timetable").child("Monday").child(selectedAircond).child("StartTime").getValue(String.class));
+                        tuesSt.setText(dataSnapshot.child("Timetable").child("Tuesday").child(selectedAircond).child("StartTime").getValue(String.class));
+                        wedSt.setText(dataSnapshot.child("Timetable").child("Wednesday").child(selectedAircond).child("StartTime").getValue(String.class));
+                        thursSt.setText(dataSnapshot.child("Timetable").child("Thursday").child(selectedAircond).child("StartTime").getValue(String.class));
+                        friSt.setText(dataSnapshot.child("Timetable").child("Friday").child(selectedAircond).child("StartTime").getValue(String.class));
+                        satSt.setText(dataSnapshot.child("Timetable").child("Saturday").child(selectedAircond).child("StartTime").getValue(String.class));
+                        sunSt.setText(dataSnapshot.child("Timetable").child("Sunday").child(selectedAircond).child("StartTime").getValue(String.class));
+
+                        monEd.setText(dataSnapshot.child("Timetable").child("Monday").child(selectedAircond).child("EndTime").getValue(String.class));
+                        tuesEd.setText(dataSnapshot.child("Timetable").child("Tuesday").child(selectedAircond).child("EndTime").getValue(String.class));
+                        wedEd.setText(dataSnapshot.child("Timetable").child("Wednesday").child(selectedAircond).child("EndTime").getValue(String.class));
+                        thursEd.setText(dataSnapshot.child("Timetable").child("Thursday").child(selectedAircond).child("EndTime").getValue(String.class));
+                        friEd.setText(dataSnapshot.child("Timetable").child("Friday").child(selectedAircond).child("EndTime").getValue(String.class));
+                        satEd.setText(dataSnapshot.child("Timetable").child("Saturday").child(selectedAircond).child("EndTime").getValue(String.class));
+                        sunEd.setText(dataSnapshot.child("Timetable").child("Sunday").child(selectedAircond).child("EndTime").getValue(String.class));
+
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
     public void editMon_OnClick(View view) {
         Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
-        intent.putExtra("Target", "Monday");
+        intent.putExtra("Day", "Monday");
+        intent.putExtra("Aircond", selectedAircond);
         startActivity(intent);
     }
 
     public void editTues_OnClick(View view) {
         Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
-        intent.putExtra("Target", "Tuesday");
+        intent.putExtra("Day", "Tuesday");
+        intent.putExtra("Aircond", selectedAircond);
         startActivity(intent);
     }
 
     public void editWed_OnClick(View view) {
         Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
-        intent.putExtra("Target", "Wednesday");
+        intent.putExtra("Day", "Wednesday");
+        intent.putExtra("Aircond", selectedAircond);
         startActivity(intent);
     }
 
     public void editThurs_OnClick(View view) {
         Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
-        intent.putExtra("Target", "Thursday");
+        intent.putExtra("Day", "Thursday");
+        intent.putExtra("Aircond", selectedAircond);
         startActivity(intent);
     }
 
     public void editFri_OnClick(View view) {
         Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
-        intent.putExtra("Target", "Friday");
+        intent.putExtra("Day", "Friday");
+        intent.putExtra("Aircond", selectedAircond);
         startActivity(intent);
     }
 
     public void editSat_OnClick(View view) {
         Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
-        intent.putExtra("Target", "Saturday");
+        intent.putExtra("Day", "Saturday");
+        intent.putExtra("Aircond", selectedAircond);
         startActivity(intent);
     }
 
     public void editSun_OnClick(View view) {
         Intent intent = new Intent(getBaseContext(), EditScheduleActivity.class);
-        intent.putExtra("Target", "Sunday");
+        intent.putExtra("Day", "Sunday");
+        intent.putExtra("Aircond", selectedAircond);
         startActivity(intent);
     }
 
