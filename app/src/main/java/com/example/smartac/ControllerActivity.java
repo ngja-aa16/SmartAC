@@ -129,10 +129,13 @@ public class ControllerActivity extends AppCompatActivity {
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 switch1.setChecked(isChecked);
-                if (isChecked)
+                if (isChecked) {
                     myRef.child("Aircond").child("Airc001").child("Status").setValue("On");
-                else
+                    myRef.child("Aircond").child("Airc001").child("FirstOn").setValue("True");
+                } else {
                     myRef.child("Aircond").child("Airc001").child("Status").setValue("Off");
+                    myRef.child("Aircond").child("Airc001").child("FirstOff").setValue("True");
+                }
             }
         });
 
@@ -140,10 +143,14 @@ public class ControllerActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 switch2.setChecked(isChecked);
 
-                if (isChecked)
+                if (isChecked) {
                     myRef.child("Aircond").child("Airc002").child("Status").setValue("On");
-                else
+                    myRef.child("Aircond").child("Airc002").child("FirstOn").setValue("True");
+                }
+                else {
                     myRef.child("Aircond").child("Airc002").child("Status").setValue("Off");
+                    myRef.child("Aircond").child("Airc002").child("FirstOff").setValue("True");
+                }
             }
         });
 
@@ -154,8 +161,7 @@ public class ControllerActivity extends AppCompatActivity {
                     myRef.child("Aircond").child("Airc001").child("AutoTemp").setValue("True");
                     increase1.setVisibility(View.INVISIBLE);
                     decrease1.setVisibility(View.INVISIBLE);
-                }
-                else {
+                } else {
                     myRef.child("Aircond").child("Airc001").child("AutoTemp").setValue("False");
                     increase1.setVisibility(View.VISIBLE);
                     decrease1.setVisibility(View.VISIBLE);
@@ -170,8 +176,7 @@ public class ControllerActivity extends AppCompatActivity {
                     myRef.child("Aircond").child("Airc002").child("AutoTemp").setValue("True");
                     increase2.setVisibility(View.INVISIBLE);
                     decrease2.setVisibility(View.INVISIBLE);
-                }
-                else {
+                } else {
                     myRef.child("Aircond").child("Airc002").child("AutoTemp").setValue("False");
                     increase2.setVisibility(View.VISIBLE);
                     decrease2.setVisibility(View.VISIBLE);
@@ -182,20 +187,27 @@ public class ControllerActivity extends AppCompatActivity {
         followTimetable1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 followTimetable1.setChecked(isChecked);
-                if (isChecked)
+                if (isChecked) {
                     myRef.child("Aircond").child("Airc001").child("FollowTimetable").setValue("True");
-                else
+                    switch1.setClickable(false);
+                } else{
                     myRef.child("Aircond").child("Airc001").child("FollowTimetable").setValue("False");
+                    switch1.setClickable(true);
+                }
             }
         });
 
         followTimetable2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 followTimetable2.setChecked(isChecked);
-                if (isChecked)
+                if (isChecked) {
                     myRef.child("Aircond").child("Airc002").child("FollowTimetable").setValue("True");
-                else
+                    switch2.setClickable(false);
+                }
+                else {
                     myRef.child("Aircond").child("Airc002").child("FollowTimetable").setValue("False");
+                    switch2.setClickable(true);
+                }
             }
         });
     }

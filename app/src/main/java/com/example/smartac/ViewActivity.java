@@ -16,8 +16,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Objects;
-
 public class ViewActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -30,6 +28,9 @@ public class ViewActivity extends AppCompatActivity {
     private TextView acTemp1;
     private TextView acTemp2;
     private ProgressBar prog;
+    private TextView leak1;
+    private TextView leak2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class ViewActivity extends AppCompatActivity {
         acStatus2 = findViewById(R.id.acStatus2);
         acTemp1 = findViewById(R.id.acTemp1);
         acTemp2 = findViewById(R.id.acTemp2);
+        leak1 = findViewById(R.id.leak1);
+        leak2 = findViewById(R.id.leak2);
         prog = findViewById(R.id.progressBar3);
         prog.setVisibility(View.VISIBLE);
 
@@ -74,6 +77,24 @@ public class ViewActivity extends AppCompatActivity {
                 else{
                     acStatus2.setTextColor(Color.RED);
                     acTemp2.setText("N/A");
+                }
+
+                if (dataSnapshot.child("Aircond").child("Airc001").child("WaterLeak").getValue(String.class).equals("Yes")){
+                    leak1.setText("Yes");
+                    leak1.setTextColor(Color.RED);
+                }
+                else{
+                    leak1.setText("No");
+                    leak1.setTextColor(Color.GREEN);
+                }
+
+                if (dataSnapshot.child("Aircond").child("Airc002").child("WaterLeak").getValue(String.class).equals("Yes")){
+                    leak2.setText("Yes");
+                    leak2.setTextColor(Color.RED);
+                }
+                else{
+                    leak2.setText("No");
+                    leak2.setTextColor(Color.GREEN);
                 }
 
                 prog.setVisibility(View.INVISIBLE);
